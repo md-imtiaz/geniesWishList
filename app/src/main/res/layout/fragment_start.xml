@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:padding="@dimen/_16sdp"
+    android:background="@drawable/bg_gradient"
+    tools:context=".views.starter.StartFragment">
+    <ImageView
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_120sdp"
+        android:src="@drawable/logo_of_genies_wish_list"
+        android:contentDescription="A gold genie lamp with a shopping bag behind it, purple and blue magical smoke rising from the bag, and sparkling stars around the smoke. Below the image, there is text that reads: Genie's Wish List. "
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:background="@drawable/bg_logo_circle"
+        android:elevation="8dp"
+        android:padding="@dimen/_8sdp"
+        android:scaleType="centerInside" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Genies  Wish list: Where Wishes Turn Into Carts! "
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_margin="@dimen/_16sdp"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:fontFamily="@font/bebas_neue_regular"
+            android:shadowColor="#AA000000"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="4" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="@dimen/_32sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:fontFamily="@font/poppins_regular" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_regular"
+        android:layout_marginHorizontal="@dimen/_32sdp"
+        android:layout_marginVertical="@dimen/_4sdp"
+        app:strokeColor="#FF5722"
+        style="@style/Widget.Material3.Button.OutlinedButton" />
+</LinearLayout>

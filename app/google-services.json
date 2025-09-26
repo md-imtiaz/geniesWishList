@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "453847498571",
+    "project_id": "genies-wishlist-395de",
+    "storage_bucket": "genies-wishlist-395de.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453847498571:android:4e5634bb8fc0ce8a30f2ce",
+        "android_client_info": {
+          "package_name": "com.shuvostechworld.genieswishlist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBI7mN_jtqe1ScFI2QZO_wqHZqsNi_xoEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
