@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.android.hilt.dagger)
+    kotlin("kapt")
 }
 
 android {
@@ -63,6 +65,13 @@ dependencies {
     implementation(libs.navigation.ui.ktx)
     implementation(libs.androidx.navigation.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.navigation.ui.ktx)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.navigation.navigation.fragment.ktx2)
+    implementation(libs.androidx.navigation.navigation.ui.ktx2)
+    implementation(libs.play.services.cast.framework)
+    kapt(libs.hilt.compiler)
+    implementation(libs.imagepicker)
+    implementation(libs.coil)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

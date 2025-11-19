@@ -80,7 +80,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
             app:singleSelection="true"
-            app:selectionRequired="true">
+            app:selectionRequired="true"
+            android:contentDescription="Select your role: Customer or Seller">
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCustomer"
                 style="@style/Widget.Material3.Button.OutlinedButton"
