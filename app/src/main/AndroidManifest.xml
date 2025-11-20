@@ -19,6 +19,7 @@
         android:theme="@style/Theme.GeniesWishlist">
         <activity
             android:name=".views.dashboard.seller.SellerDashboard"
+            android:theme="@style/Theme.GeniesWishlist.App.Bar"
             android:exported="false" />
         <activity
             android:name=".views.starter.MainActivity"
