@@ -6,6 +6,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.shuvostechworld.genieswishlist.R
 import com.shuvostechworld.genieswishlist.base.BaseFragment
 import com.shuvostechworld.genieswishlist.databinding.FragmentStartBinding
+import com.shuvostechworld.genieswishlist.views.dashboard.customer.CustomerDashboardActivity
 import com.shuvostechworld.genieswishlist.views.dashboard.seller.SellerDashboard
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -30,7 +31,7 @@ class StartFragment : BaseFragment<FragmentStartBinding> (FragmentStartBinding::
 
     private fun setupAutoLogin () {
         FirebaseAuth.getInstance().currentUser?.let {
-            startActivity(Intent(requireContext(), SellerDashboard::class.java))
+            startActivity(Intent(requireContext(), CustomerDashboardActivity::class.java))
             requireActivity().finish()
         }
     }

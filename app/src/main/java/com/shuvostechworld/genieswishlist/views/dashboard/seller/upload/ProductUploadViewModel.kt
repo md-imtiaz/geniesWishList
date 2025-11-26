@@ -24,13 +24,13 @@ class ProductUploadViewModel @Inject constructor(private val repo: SellerReposit
                 repo.uploadProduct(product).addOnSuccessListener {
                     _productUploadResponse.postValue(DataState.Success("Uploaded   Product Successfully ! "))
                 }.addOnFailureListener {
-                    _productUploadResponse.postValue(DataState.Error("${it.message}"))
+                    _productUploadResponse.postValue(DataState.Error("DB Error: ${it.message}"))
                 }
 
             }
 
         }.addOnFailureListener {
-            _productUploadResponse.postValue(DataState.Error("Image Uploading Fail!"))
+            _productUploadResponse.postValue(DataState.Error("Upload Fail: ${it.message}"))
         }
     }
 }

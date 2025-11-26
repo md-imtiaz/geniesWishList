@@ -3,6 +3,7 @@ package com.shuvostechworld.genieswishlist.db.repository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.shuvostechworld.genieswishlist.core.Nodes
@@ -27,8 +28,8 @@ class AuthRepository @Inject constructor(
         return db.collection(Nodes.USER).document(user.userID).set(user)
     }
 
-    override fun getUserByUserID(userID: String): Task<QuerySnapshot> {
-        return db.collection(Nodes.USER).whereEqualTo("userID", userID).get()
+    override fun getUserByUserID(userID: String): Task<DocumentSnapshot> {
+        return db.collection(Nodes.USER).document(userID).get()
     }
 }
 

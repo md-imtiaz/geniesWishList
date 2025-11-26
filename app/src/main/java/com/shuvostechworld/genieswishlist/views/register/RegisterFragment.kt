@@ -16,6 +16,7 @@ import com.shuvostechworld.genieswishlist.databinding.FragmentLoginBinding
 import com.shuvostechworld.genieswishlist.databinding.FragmentRegisterBinding
 import com.shuvostechworld.genieswishlist.db.models.UserRegistrationModel
 import com.shuvostechworld.genieswishlist.isEmpty
+import com.shuvostechworld.genieswishlist.views.dashboard.customer.CustomerDashboardActivity
 import com.shuvostechworld.genieswishlist.views.dashboard.seller.SellerDashboard
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -51,7 +52,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                             name,
                             email,
                             password,
-                            "Seller",
+                            "Customer",
                             ""
                         )
                         viewModel.userRegistration(user)
@@ -83,7 +84,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 is DataState.Success -> {
                     loading.dismiss()
                     Toast.makeText(context, "Created user: ${it.data}", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(requireContext(), SellerDashboard::class.java))
+                    startActivity(Intent(requireContext(), CustomerDashboardActivity::class.java))
                     requireActivity().finish()
                 }
 

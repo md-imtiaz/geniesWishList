@@ -15,6 +15,7 @@ import com.shuvostechworld.genieswishlist.core.DataState
 import com.shuvostechworld.genieswishlist.databinding.FragmentLoginBinding
 import com.shuvostechworld.genieswishlist.db.models.UserRegistrationModel
 import com.shuvostechworld.genieswishlist.isEmpty
+import com.shuvostechworld.genieswishlist.views.dashboard.customer.CustomerDashboardActivity
 import com.shuvostechworld.genieswishlist.views.dashboard.seller.SellerDashboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.getValue
@@ -59,28 +60,55 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
     override fun allObservers() {
-        loginObserver()
-    }
-
-    private fun loginObserver() {
         viewModel.loginResponse.observe(viewLifecycleOwner) {
-            when (it) {
+            when(it) {
                 is DataState.Error -> {
                     loading.dismiss()
                     Toast.makeText(context, it.message, Toast.LENGTH_LONG).show()
                 }
                 is DataState.Loading -> {
                     loading.show()
-//                    Toast.makeText(context, "Logging in...", Toast.LENGTH_SHORT).show()
+                }
+                is DataState.Success -> {
+                    val uid = it.data?.user?.uid
+                    if (uid != null) {
+                        viewModel.checkUserRole(uid)
+                    } else{
+                        loading.dismiss()
+                        Toast.makeText(context, "User ID not found!", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+
+            }
+
+        }
+
+        viewModel.userRoleResponse.observe(viewLifecycleOwner) {
+            when(it) {
+                is DataState.Error -> {
+                    loading.dismiss()
+                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                }
+                is DataState.Loading -> {
+                    loading.show()
                 }
                 is DataState.Success -> {
                     loading.dismiss()
-                    Toast.makeText(context, "Welcome", Toast.LENGTH_LONG).show()
-                    startActivity(Intent(requireContext(), SellerDashboard::class.java))
+                    val role = it.data
+                    if (role == "Seller") {
+                        startActivity(Intent(requireContext(), SellerDashboard::class.java))
+                    } else{
+                        startActivity(Intent(requireContext(), CustomerDashboardActivity::class.java))
+                    }
                     requireActivity().finish()
+
                 }
+
             }
+
         }
+
     }
 
 }
