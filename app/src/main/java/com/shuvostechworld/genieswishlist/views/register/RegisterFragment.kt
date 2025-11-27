@@ -30,6 +30,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 val name = etName.text.toString().trim()
                 val email = etEmail.text.toString().trim()
                 val password = etPassword.text.toString().trim()
+                val role = if (userType.checkedButtonId == R.id.btnSeller) "Seller" else "Customer"
 
                 when {
                     name.isEmpty() -> {
@@ -49,11 +50,11 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                     }
                     else -> {
                         val user = UserRegistrationModel(
-                            name,
-                            email,
-                            password,
-                            "Customer",
-                            ""
+                            userName = name,
+                            userEmail = email,
+                            userPassword = password,
+                            userRole = role,
+                            userID = ""
                         )
                         viewModel.userRegistration(user)
                     }
@@ -84,7 +85,12 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 is DataState.Success -> {
                     loading.dismiss()
                     Toast.makeText(context, "Created user: ${it.data}", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(requireContext(), CustomerDashboardActivity::class.java))
+                    val role = it.data?.userRole
+                    if (role == "Seller") {
+                        startActivity(Intent(requireContext(), SellerDashboard::class.java))
+                    } else {
+                        startActivity(Intent(requireContext(), CustomerDashboardActivity::class.java))
+                    }
                     requireActivity().finish()
                 }
 
